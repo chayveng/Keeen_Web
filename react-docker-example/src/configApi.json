@@ -1,4 +1,4 @@
 {
   "API_SERVER":"http://18.138.189.84:1771",
-  "API_SERVER_LOCAL": "https://localhost:7029"
+  "API_SERVER_LOCAL": "https://localhost:7029",
 }
