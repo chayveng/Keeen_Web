@@ -1,0 +1,70 @@
+"use strict";
+
+const configApi = require("../../../../../configApi.json");
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getJobAll = getJobAll;
+exports.getNextJobID = getNextJobID;
+exports.getJobAllPageList = getJobAllPageList;
+exports.getJobSearch = getJobSearch;
+exports.updateJob = updateJob;
+exports.postJob = postJob;
+exports.deleteJobSearch = deleteJobSearch;
+
+var _axios = _interopRequireDefault(require("axios"));
+
+var _react = _interopRequireWildcard(require("react"));
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+// const host_url = "https://localhost:7029";
+// const host_url = "http://13.212.143.253:1771";
+const host_url = configApi.API_SERVER;
+
+function getJobAll() {
+  return _axios["default"].get(host_url+'/api/v1/Test');
+  // return _axios["default"].get(host_url+'/api/v1/Job'); // return axios.get('https://uatapi.keeenservice.com/api/v1/Job');
+  // return _axios["default"].get('https://api.keeenservice.com/api/v1/Job'); // return axios.get('https://uatapi.keeenservice.com/api/v1/Job');
+}
+
+function getNextJobID() {
+  return _axios["default"].get(host_url+'/api/v1/Test/jobid');
+  // return _axios["default"].get(host_url+'/api/v1/job/jobid'); // return axios.get('https://uatapi.keeenservice.com/api/v1/job/jobid');
+  // return _axios["default"].get('https://api.keeenservice.com/api/v1/job/jobid'); // return axios.get('https://uatapi.keeenservice.com/api/v1/job/jobid');
+}
+
+function getJobAllPageList(data) {
+  return _axios["default"].get(host_url+"/api/v1/Test/jobs?".concat(data));
+  // return _axios["default"].get(host_url+"/api/v1/Job/jobs?".concat(data)); // return axios.get(`https://uatapi.keeenservice.com/api/v1/Job/jobs?${data}`);
+  // return _axios["default"].get("https://api.keeenservice.com/api/v1/Job/jobs?".concat(data)); // return axios.get(`https://uatapi.keeenservice.com/api/v1/Job/jobs?${data}`);
+}
+
+function getJobSearch(data) {
+  return _axios["default"].get(host_url+"/api/v1/Test/".concat(data));
+  // return _axios["default"].get(host_url+"/api/v1/Job/".concat(data)); // return axios.get(`https://uatapi.keeenservice.com/api/v1/job/${data}`);
+  // return _axios["default"].get("https://api.keeenservice.com/api/v1/job/".concat(data)); // return axios.get(`https://uatapi.keeenservice.com/api/v1/job/${data}`);
+}
+
+function updateJob(data) {
+  return _axios["default"].put(host_url+"/api/v1/Test/", data);
+  // return _axios["default"].put(host_url+"/api/v1/job/", data); // return axios.put(`https://uatapi.keeenservice.com/api/v1/job/`,data);
+  // return _axios["default"].put("https://api.keeenservice.com/api/v1/job/", data); // return axios.put(`https://uatapi.keeenservice.com/api/v1/job/`,data);
+}
+
+function postJob(data) {
+  return _axios["default"].post(host_url+"/api/v1/Job", data); // return axios.post(`https://uatapi.keeenservice.com/api/v1/job`, data);
+  // return _axios["default"].post("https://api.keeenservice.com/api/v1/job", data); // return axios.post(`https://uatapi.keeenservice.com/api/v1/job`, data);
+}
+
+function deleteJobSearch(data) {
+  return _axios["default"]["delete"](host_url+"/api/v1/Job/".concat(data)); // return axios.delete(`https://uatapi.keeenservice.com/api/v1/job/${data}`);
+  // return _axios["default"]["delete"]("https://api.keeenservice.com/api/v1/job/".concat(data)); // return axios.delete(`https://uatapi.keeenservice.com/api/v1/job/${data}`);
+}

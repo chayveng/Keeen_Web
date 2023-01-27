@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  deviasiomaterialkitproreact:
+    image: deviasiomaterialkitproreact
+    build:
+      context: react-docker-example
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3000:3000
